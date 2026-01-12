@@ -1,0 +1,58 @@
+### Spring / Maven ###
+HELP.md
+target/
+!**/src/main/**/target/
+!**/src/test/**/target/
+.mvn/wrapper/maven-wrapper.jar
+
+### MySQL runtime data ###
+mysql/
+*.ibd
+*.cnf
+*.pem
+*.sock
+binlog.*
+undo_*
+ibdata*
+ibtmp*
+#innodb_*
+performance_schema/
+sys/
+
+### Logs ###
+logs/
+*.log
+
+### IDEs ###
+# IntelliJ IDEA
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Eclipse / STS
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings/
+.springBeans
+.sts4-cache/
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+# VS Code
+.vscode/
+
+### OS ###
+.DS_Store
+Thumbs.db
+
