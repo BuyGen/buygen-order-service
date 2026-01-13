@@ -4,6 +4,7 @@ import com.project.microservices.order_service.client.InventoryClient;
 import com.project.microservices.order_service.dto.OrderRequest;
 import com.project.microservices.order_service.model.Order;
 import com.project.microservices.order_service.repository.OrderRepository;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
