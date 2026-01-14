@@ -6,9 +6,12 @@ import com.project.microservices.order_service.model.Order;
 import com.project.microservices.order_service.repository.OrderRepository;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.UUID;
+
 
 @Service
 @RequiredArgsConstructor
@@ -33,7 +36,11 @@ public class OrderService {
             orderRepository.save(order);
         }
         else {
-            throw new IllegalArgumentException("Product with SkuCOde " + orderRequest.skuCode() +"is not in stock, please try again later.");
+            throw new ResponseStatusException(
+                    HttpStatus.CONFLICT,
+                    "Product with skuCode " + orderRequest.skuCode() + " is not in stock"
+            );
+
         }
     }
 }

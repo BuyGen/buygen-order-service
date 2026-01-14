@@ -136,6 +136,11 @@
             <artifactId>testcontainers-mysql</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.project.microservices</groupId>
+            <artifactId>order-service</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
 
     </dependencies>
 
