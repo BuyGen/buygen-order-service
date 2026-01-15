@@ -1,13 +1,11 @@
 package com.project.microservices.order_service.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
 
+@Data
 @Entity
 @Table(name = "t_orders")
 @Getter
