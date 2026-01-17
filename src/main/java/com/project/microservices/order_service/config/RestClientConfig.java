@@ -1,6 +1,9 @@
 package com.project.microservices.order_service.config;
 
 import com.project.microservices.order_service.client.InventoryClient;
+import io.micrometer.observation.ObservationRegistry;
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,8 +22,16 @@ import java.time.Duration;
 @Configuration
 public class RestClientConfig {
 
-    @Value("${inventory.url}")
-    private String inventoryServiceUrl;
+    private final String inventoryServiceUrl;
+    private final ObservationRegistry observationRegistry;
+
+    public RestClientConfig(
+            @Value("${inventory.url}") String inventoryServiceUrl,
+            ObservationRegistry observationRegistry
+    ) {
+        this.inventoryServiceUrl = inventoryServiceUrl;
+        this.observationRegistry = observationRegistry;
+    }
 
     @Bean
     public InventoryClient inventoryClient() {
@@ -40,6 +51,7 @@ public class RestClientConfig {
         RestClient restClient = RestClient.builder()
                 .baseUrl(inventoryServiceUrl)
                 .requestFactory(requestFactory)
+                .observationRegistry(observationRegistry)
                 .build();
 
         RestClientAdapter adapter = RestClientAdapter.create(restClient);
